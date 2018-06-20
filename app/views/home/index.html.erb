@@ -1,0 +1,22 @@
+<h1>Welcome to Joe's pizza, the best pizza of New York, Maybe.</h1>
+<p>This is our Menu:</p>
+
+<% @recipes.each do |recipe| %>
+  <div class="row align-items-start">
+    <div class="col">
+      <div class="col-lg-3">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3><%= recipe.name %></h3>
+            <hr />
+            <h5 style="color: #999999">Base recipe price: <%= recipe.price %> USD</h5>
+            <p>
+            <div class="btn btn-default"><td style="color: white"><%= link_to 'Show', recipe %></td></div>
+            <div class="btn btn-default"><td style="color: white">add to cart</td></div>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+<% end %>
