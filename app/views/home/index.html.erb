@@ -9,6 +9,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= recipe.name %></h5>
       <p class="card-text">It's a woozy!</p>
+      <% @recing.where(recipe_id: recipe).each do |ing| %>
+        <%= @ingredients.where(id: ing).name %>
+      <% end %>
       <p class="card-text">Base recipe price: <%= recipe.price %> USD</p>
       <a><%= link_to 'Show', recipe, class:"btn btn-primary" %></a>
     </div>

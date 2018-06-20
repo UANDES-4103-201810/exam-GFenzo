@@ -14,8 +14,8 @@
   <tbody>
     <% @recipeingredients.each do |recipeingredient| %>
       <tr>
-        <td><%= recipeingredient.recipe %></td>
-        <td><%= recipeingredient.ingredient %></td>
+        <td><%= recipeingredient.recipe_id %></td>
+        <td><%= recipeingredient.ingredient_id %></td>
         <td><%= link_to 'Show', recipeingredient %></td>
         <td><%= link_to 'Edit', edit_recipeingredient_path(recipeingredient) %></td>
         <td><%= link_to 'Destroy', recipeingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

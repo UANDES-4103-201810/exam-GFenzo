@@ -31,16 +31,17 @@
 
 <hr/>
 
-
-<%= form_for Order.new do |pz| %>
-  <%= label_tag("Select your Payment:") %>
-  <%= label_tag(:payment, "Cash") %>
-  <%= pz.radio_button(:payment, "Cash") %>
-  <%= label_tag(:payment, "Credit") %>
-  <%= pz.radio_button(:payment, "Credit") %>
-  <%= pz.hidden_field :user_id, :value => current_user.id %>
-  </div>
-  <%= pz.submit "Order", class:"btn btn-primary" %>
+<% if user_signed_in? %>
+  <%= form_for Order.new do |pz| %>
+    <%= label_tag("Select your Payment:") %>
+    <%= label_tag(:payment, "Cash") %>
+    <%= pz.radio_button(:payment, "Cash") %>
+    <%= label_tag(:payment, "Credit") %>
+    <%= pz.radio_button(:payment, "Credit") %>
+    <%= pz.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <%= pz.submit "Order", class:"btn btn-primary" %>
+  <% end %>
 <% end %>
 
 <br>
