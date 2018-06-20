@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @order.user %>
+  <%= @order.user.email %>
 </p>
 
 <p>
@@ -10,5 +10,21 @@
   <%= @order.payment %>
 </p>
 
+<h1>Now give us some Delivery Information</h1>
+
+<%= form_for Deliveryinfo.new do |di| %>
+  <li><%= label_tag("Receiver Name:") %>
+    <%= di.text_field :name %></li>
+  <li><%= label_tag("Address 1:") %>
+    <%= di.text_field :address1 %></li>
+  <li><%= label_tag("Address 2:") %>
+    <%= di.text_field :address2 %></li>
+  <li><%= label_tag("Phone Number:") %>
+    <%= di.text_field :phone %></li>
+  <%= di.hidden_field :order_id, :value => @order.id %>
+  </div>
+  <%= di.submit "Confirm Address", class:"btn btn-primary" %>
+<% end %>
+<!--
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %>-->

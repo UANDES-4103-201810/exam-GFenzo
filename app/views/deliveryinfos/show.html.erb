@@ -22,8 +22,17 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @deliveryinfo.order %>
+  <%= @deliveryinfo.order.id %>
 </p>
 
+<% @pizzas.where(user_id: current_user).each do |pizza| %>
+  <%= form_for Pizzaorder.new do |po| %>
+    <%= po.hidden_field :order_id, :value => @deliveryinfo.order_id %>
+    <%= po.hidden_field :pizza_id, :value => pizza.id %>
+    <%= po.submit "Confirm Order", class:"btn btn-primary"%>
+  <% end %>
+<% end %>
+
+<!--
 <%= link_to 'Edit', edit_deliveryinfo_path(@deliveryinfo) %> |
-<%= link_to 'Back', deliveryinfos_path %>
+<%= link_to 'Back', deliveryinfos_path %>-->

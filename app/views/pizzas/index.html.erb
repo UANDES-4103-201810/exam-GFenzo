@@ -30,16 +30,7 @@
 <h3> Order Total: <%= total %> USD</h3>
 
 <hr/>
-<%= form_for Deliveryinfo.new do |di| %>
-  <li><%= label_tag("Receiver Name:") %>
-    <%= di.text_field :name %></li>
-  <li><%= label_tag("Address 1:") %>
-    <%= di.text_field :address1 %></li>
-  <li><%= label_tag("Address 2:") %>
-    <%= di.text_field :address2 %></li>
-  <li><%= label_tag("Phone Number:") %>
-    <%= di.text_field :phone %></li>
-  </div>
+
 
 <%= form_for Order.new do |pz| %>
   <%= label_tag("Select your Payment:") %>
@@ -49,8 +40,8 @@
   <%= pz.radio_button(:payment, "Credit") %>
   <%= pz.hidden_field :user_id, :value => current_user.id %>
   </div>
-  <%= pz.submit "Order" and di.submit "Order", class:"btn btn-primary" %>
+  <%= pz.submit "Order", class:"btn btn-primary" %>
 <% end %>
-<% end %>
+
 <br>
 

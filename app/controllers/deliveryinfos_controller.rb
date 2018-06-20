@@ -10,6 +10,7 @@ class DeliveryinfosController < ApplicationController
   # GET /deliveryinfos/1
   # GET /deliveryinfos/1.json
   def show
+    @pizzas = Pizza.all
   end
 
   # GET /deliveryinfos/new
@@ -28,7 +29,7 @@ class DeliveryinfosController < ApplicationController
 
     respond_to do |format|
       if @deliveryinfo.save
-        format.html { redirect_to @deliveryinfo, notice: 'Deliveryinfo was successfully created.' }
+        format.html { redirect_to @deliveryinfo, notice: 'Delivery information was successfully added.' }
         format.json { render :show, status: :created, location: @deliveryinfo }
       else
         format.html { render :new }
