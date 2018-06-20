@@ -5,6 +5,8 @@ class PizzasController < ApplicationController
   # GET /pizzas.json
   def index
     @pizzas = Pizza.all
+    @crusts = Crust.all
+    @recipes = Recipe.all
   end
 
   # GET /pizzas/1

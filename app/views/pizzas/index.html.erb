@@ -1,31 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pizzas</h1>
+<h1>Your Order</h1>
 
 <table>
   <thead>
     <tr>
       <th>Crust</th>
       <th>Recipe</th>
-      <th>User</th>
+      <th>Price</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pizzas.each do |pizza| %>
+    <% total = 0%>
+    <% @pizzas.where(user_id: current_user).each do |pizza| %>
       <tr>
-        <td><%= pizza.crust %></td>
-        <td><%= pizza.recipe %></td>
-        <td><%= pizza.user %></td>
-        <td><%= link_to 'Show', pizza %></td>
-        <td><%= link_to 'Edit', edit_pizza_path(pizza) %></td>
+        <td><%= pizza.crust.name %></td>
+        <td><%= pizza.recipe.name %></td>
+        <td><%= pizza.crust.price + pizza.recipe.price %></td>
+        <% total += (pizza.crust.price + pizza.recipe.price) %>
         <td><%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
 
+<h3> Order Total: <%= total %> USD</h3>
+
+<hr/>
+<%= form_for Deliveryinfo.new do |di| %>
+  <li><%= label_tag("Receiver Name:") %>
+    <%= di.text_field :name %></li>
+  <li><%= label_tag("Address 1:") %>
+    <%= di.text_field :address1 %></li>
+  <li><%= label_tag("Address 2:") %>
+    <%= di.text_field :address2 %></li>
+  <li><%= label_tag("Phone Number:") %>
+    <%= di.text_field :phone %></li>
+  </div>
+
+<%= form_for Order.new do |pz| %>
+  <%= label_tag("Select your Payment:") %>
+  <%= label_tag(:payment, "Cash") %>
+  <%= pz.radio_button(:payment, "Cash") %>
+  <%= label_tag(:payment, "Credit") %>
+  <%= pz.radio_button(:payment, "Credit") %>
+  <%= pz.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <%= pz.submit "Order" and di.submit "Order", class:"btn btn-primary" %>
+<% end %>
+<% end %>
 <br>
 
-<%= link_to 'New Pizza', new_pizza_path %>

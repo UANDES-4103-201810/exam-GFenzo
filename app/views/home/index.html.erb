@@ -1,22 +1,17 @@
-<h1>Welcome to Joe's pizza, the best pizza of New York, Maybe.</h1>
+<h1>Welcome to Joe's pizza, the best pizza of New York, Maybe...?</h1>
 <p>This is our Menu:</p>
 
+<div class="row align-items-start">
 <% @recipes.each do |recipe| %>
-  <div class="row align-items-start">
-    <div class="col">
-      <div class="col-lg-3">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3><%= recipe.name %></h3>
-            <hr />
-            <h5 style="color: #999999">Base recipe price: <%= recipe.price %> USD</h5>
-            <p>
-            <div class="btn btn-default"><td style="color: white"><%= link_to 'Show', recipe %></td></div>
-            <div class="btn btn-default"><td style="color: white">add to cart</td></div>
-            </p>
-          </div>
-        </div>
-      </div>
 
+  <div class="card" style="width: 18rem; margin-left: 10px; margin-bottom: 10px">
+    <img class="card-img-top" src="https://uz71pyzpz0-flywheel.netdna-ssl.com/wp-content/uploads/2017/10/pepperoni-pizza-cheese-dip-9a-700x690.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= recipe.name %></h5>
+      <p class="card-text">It's a woozy!</p>
+      <p class="card-text">Base recipe price: <%= recipe.price %> USD</p>
+      <a><%= link_to 'Show', recipe, class:"btn btn-primary" %></a>
     </div>
+  </div>
 <% end %>
+</div>

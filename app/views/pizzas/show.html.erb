@@ -2,18 +2,20 @@
 
 <p>
   <strong>Crust:</strong>
-  <%= @pizza.crust %>
+  <%= @pizza.crust.name %>
 </p>
 
 <p>
   <strong>Recipe:</strong>
-  <%= @pizza.recipe %>
+  <%= @pizza.recipe.name %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @pizza.user %>
+  <strong>User Email:</strong>
+  <%= @pizza.user.email %>
 </p>
+<!--
 
 <%= link_to 'Edit', edit_pizza_path(@pizza) %> |
 <%= link_to 'Back', pizzas_path %>
+-->
